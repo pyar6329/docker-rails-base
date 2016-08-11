@@ -1,0 +1,37 @@
+version: "2"
+services:
+  data:
+    image: pyar6329/rails-base:data-latest
+    volumes:
+      - ./var/postgresql/data:/var/lib/postgresql/data
+  postgresql:
+    restart: always
+    image: postgres:9.5
+    environment:
+      - POSTGRES_PASSWORD=rails
+      - POSTGRES_USER=rails
+      - POSTGRES_DB=rails
+    volumes_from:
+      - data
+
+  rails:
+    restart: always
+    build: ./builds
+    volumes_from:
+      - data
+    volumes:
+      - ./builds/app:/usr/src/app
+    depends_on:
+      - postgresql
+    links:
+      - "postgresql:postgresql"
+    ports:
+      - "3000:3000"
+    environment:
+      - RAILS_ENV=development
+      - DB_HOST=postgresql
+      - DB_DATABASE=rails
+      - DB_USERNAME=rails
+      - DB_PASSWORD=rails
+    entrypoint: dockerize -wait tcp://postgresql:5432 -timeout 300s docker-entrypoint.sh
+    command: spring rails s -p 3000 -b 0.0.0.0
