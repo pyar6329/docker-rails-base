@@ -1,7 +1,7 @@
 FROM pyar6329/ruby-node:2.3.1-6.3.1
 MAINTAINER Tsukasa Arima
 
-ENV RAILS_ENV=development
+ENV RAILS_ENV=development NODE_ENV=development
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
@@ -23,6 +23,9 @@ WORKDIR /usr/src/app
 
 ONBUILD RUN set -x \
     && cd /usr/src/app \
+    && npm install -g npm \
+    && gem update --system \
+    && gem update bundler \
     && npm install \
     && bundle install
 

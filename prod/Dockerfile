@@ -1,7 +1,7 @@
 FROM pyar6329/ruby-node:2.3.1-6.3.1
 MAINTAINER Tsukasa Arima
 
-ENV RAILS_ENV=production
+ENV RAILS_ENV=production NODE_ENV=production
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
@@ -23,7 +23,10 @@ ONBUILD RUN set -x \
         ca-certificates wget curl-dev build-base alpine-sdk linux-headers paxctl \
         make gcc g++ libgcc libstdc++ gnupg \
     && cd /usr/src/app \
-    && npm install \
+    && npm install -g npm \
+    && gem update --system \
+    && gem update bundler \
+    && npm install --production \
     && bundle install --without development test \
     && apk del .build-packages
 
