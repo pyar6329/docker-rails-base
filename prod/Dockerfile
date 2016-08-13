@@ -1,6 +1,7 @@
 FROM pyar6329/ruby-node:2.3.1-6.3.1
 MAINTAINER Tsukasa Arima
 
+ARG DOCKERIZE_VERSION=v0.2.0
 ENV RAILS_ENV=production NODE_ENV=production
 
 COPY docker-entrypoint.sh /usr/local/bin/
@@ -22,6 +23,9 @@ ONBUILD RUN set -x \
     && apk add --update --upgrade --no-cache --virtual .build-packages openssl-dev \
         ca-certificates wget curl-dev build-base alpine-sdk linux-headers paxctl \
         make gcc g++ libgcc libstdc++ gnupg \
+    && wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-linux-amd64-v0.2.0.tar.gz \
     && cd /usr/src/app \
     && npm update -g npm \
     && gem update --system \
