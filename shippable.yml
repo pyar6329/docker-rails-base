@@ -6,8 +6,8 @@ build:
   ci:
     - docker images
     - docker ps -a
-    - docker images | grep ruby-node | awk '{print $3}' | xargs -r -n 1 -I {} docker rmi -f {}
     - docker images | grep rails-base | awk '{print $3}' | xargs -r -n 1 -I {} docker rmi -f {}
+    - docker images | grep ruby-node | awk '{print $3}' | xargs -r -n 1 -I {} docker rmi -f {}
     - docker build -t pyar6329/rails-base:data-latest -f ./data/Dockerfile ./data
     - docker build -t pyar6329/rails-base:dev-2.3.1-6.3.1 -f ./dev/Dockerfile ./dev
     - docker build -t pyar6329/rails-base:prod-2.3.1-6.3.1 -f ./prod/Dockerfile ./prod
