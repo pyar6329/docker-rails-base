@@ -1,5 +1,9 @@
 #!/bin/sh
-set -x
+set -ex
+
+if [ "$1" = "sh" -o "$1" = "bash" ]; then
+    exec "bash"
+fi
 
 if [ "$1" = 'unicorn_rails' ]; then
     cd /usr/src/app
