@@ -30,7 +30,7 @@ services:
     environment:
       - RAILS_ENV=development
       - DB_HOST=postgresql
-	    - DB_PORT=5432
+      - DB_PORT=5432
       - DB_DATABASE=rails
       - DB_USERNAME=rails
       - DB_PASSWORD=rails
