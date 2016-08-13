@@ -23,7 +23,10 @@ Docker hub: [https://hub.docker.com/r/pyar6329/rails-base](https://hub.docker.co
 #### docker build
 
 1. [Dockerfileを作成してください](https://github.com/pyar6329/docker-rails-base/blob/master/sample/dev/builds/Dockerfile)
-2. Dockerfileと同じディレクトリにrailsのリポジトリを `app` という名前で保存してください。
+2. 環境変数で以下を追加してください
+	- DB_HOST="DBのホスト名"
+	- DB_PORT="DBのポート番号"
+3. Dockerfileと同じディレクトリにrailsのリポジトリを `app` という名前で保存してください。
 
 ```
 $ cat << EOF > Dockerfile
@@ -61,6 +64,8 @@ $ docker build .
 	- RAILS_ENV=production
 	- NODE_ENV=production
 	- SECRET_KEY_BASE="シークレットキー"
+	- DB_HOST="DBのホスト名"
+	- DB_PORT="DBのポート番号"
 3. Dockerfileと同じディレクトリにrailsのリポジトリを app という名前で保存してください。
 
 ```
