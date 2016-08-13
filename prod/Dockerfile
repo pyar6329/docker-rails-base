@@ -23,7 +23,7 @@ ONBUILD RUN set -x \
         ca-certificates wget curl-dev build-base alpine-sdk linux-headers paxctl \
         make gcc g++ libgcc libstdc++ gnupg \
     && cd /usr/src/app \
-    && npm install -g npm \
+    && npm update -g npm \
     && gem update --system \
     && gem update bundler \
     && npm install --production \

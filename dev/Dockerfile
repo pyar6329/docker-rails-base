@@ -23,7 +23,7 @@ WORKDIR /usr/src/app
 
 ONBUILD RUN set -x \
     && cd /usr/src/app \
-    && npm install -g npm \
+    && npm update -g npm \
     && gem update --system \
     && gem update bundler \
     && npm install \
