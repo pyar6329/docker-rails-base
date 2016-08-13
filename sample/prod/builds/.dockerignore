@@ -1,0 +1,25 @@
+## Rails
+app/public/assets/*
+
+## Environment normalisation:
+app/.bin
+app/.bundle
+app/node_modules
+app/vendor/bundle
+app/.git
+app/.github
+app/.gitignore
+app/.travis.yml
+app/README.md
+app/erd.pdf
+
+## log
+app/log
+app/tmp
+
+## OSX
+.DS_Store
+
+## docker
+.dockerignore
+containers
