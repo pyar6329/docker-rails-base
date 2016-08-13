@@ -11,7 +11,7 @@ RUN set -x \
     && chmod u+x /usr/local/bin/docker-entrypoint.sh \
     && apk add --update --upgrade --no-cache --virtual .rails-dependency-packages \
         ruby-dev zlib-dev libxml2-dev libxml2-utils libxslt-dev tzdata yaml-dev \
-        readline-dev sqlite-dev postgresql-dev mysql-dev \
+        readline-dev sqlite-dev postgresql-dev mysql-dev bash \
     && apk add --update --upgrade --no-cache --virtual .build-packages openssl-dev \
         ca-certificates wget curl-dev build-base alpine-sdk linux-headers paxctl \
         make gcc g++ libgcc libstdc++ gnupg \

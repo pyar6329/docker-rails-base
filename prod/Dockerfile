@@ -11,7 +11,7 @@ RUN set -x \
     && chmod u+x /usr/local/bin/docker-entrypoint.sh \
     && apk add --update --upgrade --no-cache --virtual .rails-dependency-packages \
         ruby-dev zlib-dev libxml2-dev libxml2-utils libxslt-dev tzdata yaml-dev \
-        readline-dev sqlite-dev postgresql-dev mysql-dev
+        readline-dev sqlite-dev postgresql-dev mysql-dev bash
 
 ONBUILD COPY app/Gemfile /usr/src/app/Gemfile
 ONBUILD COPY app/Gemfile.lock /usr/src/app/Gemfile.lock
