@@ -30,7 +30,7 @@ ONBUILD RUN set -x \
     && npm update -g npm \
     && gem update --system \
     && gem update bundler \
-    && npm install \
+    && npm install -g \
     && bundle install
 
 ONBUILD COPY app /usr/src/app
