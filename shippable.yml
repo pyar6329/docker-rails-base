@@ -11,10 +11,15 @@ build:
     - docker build -t pyar6329/rails-base:data-latest -f ./data/Dockerfile ./data
     - docker build -t pyar6329/rails-base:dev-2.3.1-6.3.1 -f ./dev/Dockerfile ./dev
     - docker build -t pyar6329/rails-base:prod-2.3.1-6.3.1 -f ./prod/Dockerfile ./prod
+    - docker build -t pyar6329/rails-base:dev-ruby-2.3.1 -f ./dev-ruby/Dockerfile ./dev-ruby
+    - docker build -t pyar6329/rails-base:prod-ruby-2.3.1 -f ./prod-ruby/Dockerfile ./prod-ruby
+
   post_ci:
     - if [ "$IS_PULL_REQUEST" == "false" ] && [ "$BRANCH" == "master" ]; then docker push pyar6329/rails-base:data-latest; fi
     - if [ "$IS_PULL_REQUEST" == "false" ] && [ "$BRANCH" == "master" ]; then docker push pyar6329/rails-base:dev-2.3.1-6.3.1; fi
     - if [ "$IS_PULL_REQUEST" == "false" ] && [ "$BRANCH" == "master" ]; then docker push pyar6329/rails-base:prod-2.3.1-6.3.1; fi
+    - if [ "$IS_PULL_REQUEST" == "false" ] && [ "$BRANCH" == "master" ]; then docker push pyar6329/rails-base:dev-ruby-2.3.1; fi
+    - if [ "$IS_PULL_REQUEST" == "false" ] && [ "$BRANCH" == "master" ]; then docker push pyar6329/rails-base:prod-ruby-2.3.1; fi
 
 integrations:
   hub:
