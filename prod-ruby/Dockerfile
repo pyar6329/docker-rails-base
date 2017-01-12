@@ -11,7 +11,7 @@ RUN set -x \
     && chmod u+x /usr/local/bin/docker-entrypoint.sh \
     && apk add --update --upgrade --no-cache --virtual .rails-dependency-packages \
         ruby-dev zlib-dev libxml2-dev libxml2-utils libxslt-dev tzdata yaml-dev \
-        readline-dev sqlite-dev postgresql-dev mysql-dev bash \
+        readline-dev postgresql-dev bash \
     && apk add --update --upgrade --no-cache --virtual .dockerize-packages \
         ca-certificates wget \
     && wget https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz \
