@@ -11,7 +11,7 @@ RUN set -x \
     && chmod u+x /usr/local/bin/docker-entrypoint.sh \
     && apk add --update --upgrade --no-cache --virtual .rails-dependency-packages \
         ruby-dev zlib-dev libxml2-dev libxml2-utils libxslt-dev tzdata yaml-dev \
-        readline-dev postgresql-dev bash \
+        readline-dev libpq bash \
     && apk add --update --upgrade --no-cache --virtual .dockerize-packages \
         ca-certificates wget \
     && wget https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz \
@@ -26,7 +26,7 @@ WORKDIR /usr/src/app
 ONBUILD RUN set -x \
     && apk add --update --upgrade --no-cache --virtual .build-packages openssl-dev \
         ca-certificates wget curl-dev build-base alpine-sdk linux-headers paxctl \
-        make gcc g++ libgcc libstdc++ gnupg \
+        make gcc g++ libgcc libstdc++ gnupg postgresql-dev \
     && cd /usr/src/app \
     && gem update --system \
     && gem update bundler \
