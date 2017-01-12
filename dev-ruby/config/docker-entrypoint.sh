@@ -12,10 +12,10 @@ if [ "$1" = "rails" -o "$2" = "rails" ]; then
       dockerize -wait tcp://$DB_HOST:$DB_PORT -timeout 300s
     fi
     if [ $RAILS_VERSION -ge 5 ]; then
-      rails db:migrate:reset
+      rails db:migrate
       rails db:seed
     else
-      rake db:migrate:reset
+      rake db:migrate
       rake db:seed
     fi
     exec "$@"
